@@ -1,0 +1,176 @@
+{
+    "books": {
+        "isbn1": {
+            "title": "Rich Dad Poor Dad",
+            "author": "Robert Kiyosaki",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn2": {
+            "title": "Sapiens: A Brief History of Humankind",
+            "author": "Yuval Noah Harari",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/41+lolL22gL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn3": {
+            "title": "How to win friends and influence people.",
+            "author": "Dale Carnegie",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/81PQGGNul3L.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn4": {
+            "title": "Think Like a Monk",
+            "author": "Jay Shetty",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/81s6DUyQCZL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn5": {
+            "title": "Ikigai: The Japanese Secret to a Long and Happy Life",
+            "author": "Francesc Miralles",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/71tbalAHYCL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn6": {
+            "title": "In Search of Lost Time",
+            "author": "Marcel Proust",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/51tRkYYlpaL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn7": {
+            "title": "The Subtle Art of Not Giving a F*ck",
+            "author": "Mark Manson",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/71QKQ9mwV7L.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn8": {
+            "title": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+            "author": "James Clear",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn9": {
+            "title": "Thinking, Fast and Slow",
+            "author": "Daniel Kahneman",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/61fdrEuPJwL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        },
+        "isbn10": {
+            "title": "Make Your Bed",
+            "author": "William H. McRaven",
+            "coverpage": "https://images-na.ssl-images-amazon.com/images/I/71e1bko1zRL.jpg",
+            "overallRatings": 3,
+            "review": [
+                {
+                    "rating": 3,
+                    "comment": "i loved this book"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Book servers the purpose"
+                }
+            ]
+        }
+    },
+    "listIsbn": [
+        "isbn1",
+        "isbn2",
+        "isbn3",
+        "isbn4",
+        "isbn5",
+        "isbn6",
+        "isbn7",
+        "isbn8",
+        "isbn9",
+        "isbn10"
+    ]
+}
