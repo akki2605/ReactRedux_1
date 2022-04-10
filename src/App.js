@@ -1,9 +1,21 @@
-import './App.css';
+import "./App.css";
+import Header from "./components/Homepage/Header";
+import Card from "./components/Homepage/Card";
 
 function App() {
   return (
     <>
-      <h1>Book Review Application</h1>
+      <Header />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </>
   );
 }
