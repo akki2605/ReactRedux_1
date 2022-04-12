@@ -1,50 +1,21 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import Header from "./components/Homepage/Header";
-import Card from "./components/Homepage/Card";
-import {connect } from "react-redux";
+import React from "react";
+import Homepage from "./components/Homepage/Homepage";
+import Specificbook from "./components/SpecificBook/Specificbook";
+
+import { BrowserRouter ,Routes, Route } from "react-router-dom";
 
 
-const mapStateToProps = (state)=>{
-  return {
-    allBooks:state.allBooks
-  }
-}
-const mapDispatchToProps = (dispatch)=>{
-  return {
-    getAllData:()=>dispatch({type:"readBook"})
-  }
-}
-
-
-
-function App({getAllData,allBooks}) {
-
-  useEffect(()=>{
-    getAllData()
-  },[])
-
-  var store;
-  const lStorage = localStorage.getItem("store");
-  if (lStorage == null ) {
-    store = allBooks
-    localStorage.setItem("store", JSON.stringify(store));
-  } else {
-    store = JSON.parse(lStorage);
-  }
-
+function App() {
   return (
-    <>
-      <Header />
-      <div>
-        {
-          store.listIsbn.map((isbn) => {
-            return <Card key={isbn} book={store.books[isbn]}/>
-          })
-        }
-      </div>
-    </>
+    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/Specificbook" element={<Specificbook/>} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default App;
