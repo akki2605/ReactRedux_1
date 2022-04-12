@@ -1,7 +1,7 @@
-import { createStore , combineReducers} from 'redux';
+import {createStore} from 'redux';
 import data from '../books.json'
 
-const reducer = (initialState = {allBooks: {}},action)=>{
+export const reducer = (initialState = {allBooks: {}},action)=>{
     switch(action.type){
         case "readBook":
             return {allBooks: data}
@@ -13,17 +13,17 @@ const reducer = (initialState = {allBooks: {}},action)=>{
 const store = createStore(reducer);
 
 store.dispatch({
-    type:"readBook"
+        type : "readBook"
 })
-// const isbn = store.getState().allBooks.listIsbn[2];
-
 
 console.log(store.getState().allBooks.books)
+
 export default store
 
 
 
 
+// const isbn = store.getState().allBooks.listIsbn[2];
 // const unsubscribe = store.subscribe(()=>{console.log("action taken place ",store.getState())})
 // unsubscribe()
 // const rootReducer = combineReducers({

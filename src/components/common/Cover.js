@@ -1,7 +1,7 @@
 import React from "react";  
 
-export default function Cover() {
+export default function Cover(props) {
     return(
-        <img className="bookCover" src="https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg" />
+        <img className="bookCover" src={props.link} />
     );
 }
