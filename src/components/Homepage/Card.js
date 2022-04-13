@@ -9,10 +9,10 @@ export default function Card(props) {
   return (
     <Link to={"/specific_book?isbn="+props.id} style={{ textDecoration: 'none',color: 'black'}}>
       <div className="card">
-        <Cover link={props.book.coverpage} />
-        <Title title={props.book.title} />
-        <Rating number={props.book.overallRatings} />
-        <Author author={props.book.author} />
+        <Cover className="bookCover" link={props.book.coverpage} />
+        <Title className="title" title={props.book.title} />
+        <Rating className="star"number={props.book.overallRatings} />
+        <Author className="authorName" author={props.book.author} />
       </div>
     </Link>
   );

@@ -1,15 +1,15 @@
 import React from "react";
 
-function Title({ title }) {
+function Title({ title, className }) {
   return (
     <>
-      <p className="title">{title}</p>
+      <p className={className}>{title}</p>
     </>
   );
 }
 
-function Author({ author }) {
-  return <h5 className="authorName">- {author}</h5>;
+function Author({ author,className }) {
+  return <h5 className={className}>- {author}</h5>;
 }
 
 export { Title, Author };

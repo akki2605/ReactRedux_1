@@ -4,7 +4,13 @@ import data from '../books.json'
 export const reducer = (initialState = {allBooks: {}},action)=>{
     switch(action.type){
         case "readBook":
-            return {allBooks: data}
+            return {
+                allBooks: data
+            }
+        case "updateBook":
+            return{
+                allBooks:action.payload.data
+            }
         default:
             return initialState
     }
@@ -22,8 +28,6 @@ export default store
 
 
 
-
-// const isbn = store.getState().allBooks.listIsbn[2];
 // const unsubscribe = store.subscribe(()=>{console.log("action taken place ",store.getState())})
 // unsubscribe()
 // const rootReducer = combineReducers({

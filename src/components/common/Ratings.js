@@ -3,7 +3,7 @@ import StarRatings from "react-star-ratings";
 
 export default function Rating(props) {
   return (
-    <div className="star">
+    <div className={props.className}>
       <StarRatings
         rating={props.number}
         starRatedColor="gold"
