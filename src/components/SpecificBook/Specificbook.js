@@ -4,6 +4,7 @@ import Header from "../Homepage/Header";
 import Cover from "../common/Cover";
 import Comment from "./Comment";
 import Rating from "../common/Ratings";
+import ModalPopUp from "./ModalPopUp"
 import { RatingStar } from "rating-star";
 import { Title, Author } from "../common/BookDescription";
 import "./specific.css";
@@ -25,65 +26,88 @@ const mapDispatchToProps = (dispatch) => {
 
 const restricted = ["poor", "waste", "disgusting", "horrible", "filthy"];
 
-function check(comment) {
-  if (restricted.some((v) => comment.includes(v))) return true;
-  else return false;
-}
-
 function Specificbook({ updateBook }) {
-  const [newRating, setRating] = React.useState(0);
-  const onRatingChange = (rate) => {
+  
+  function check(comment) {
+    if (restricted.some((v) => comment.includes(v))) {
+      return true;
+    } else 
+    return false;
+  }
+
+  const [newRating, setRating] = useState(0);
+    const onRatingChange = (rate) => {
     setRating(rate);
   };
 
+  const [toggleModal, setToggleModal] = useState(false);
+  
   const handleSubmit = (e, isbn) => {
     e.preventDefault();
     var newComment = document.getElementById("comments").value;
+    var updatedComment = newComment;
 
-    if (check(newComment)) {
-      // alert("restricted  comment !!!!");
-      var commentArr = newComment.split(" ");
-      commentArr.forEach((ele, index) => {
-        switch (ele) {
-          case "poor":
-            commentArr[index] = "p**r";
-            break;
-          case "waste":
-            commentArr[index] = "w***e";
-            break;
-          case "disgusting":
-            commentArr[index] = "d********g";
-            break;
-          case "horrible":
-            commentArr[index] = "h******e";
-            break;
-          case "filthy":
-            commentArr[index] = "f*****y";
-            break;
-          default:
-            break;
+    if(newRating >0 && updatedComment.length>0){
+      if ( check(updatedComment) ) {
+        setToggleModal(true);
+        var commentArr = newComment.split(" ");
+        commentArr.forEach((ele, index) => {
+          switch (ele) {
+            case "poor":
+              commentArr[index] = "p**r";
+              break;
+            case "waste":
+              commentArr[index] = "w***e";
+              break;
+            case "disgusting":
+              commentArr[index] = "d********g";
+              break;
+            case "horrible":
+              commentArr[index] = "h******e";
+              break;
+            case "filthy":
+              commentArr[index] = "f*****y";
+              break;
           }
-      });
-      var updatedComment = commentArr.join(' ');
+        });
+        
+        updatedComment = commentArr.join(' '); 
+        document.getElementById("comments").value = updatedComment;
+        console.log("inside if block",updatedComment , newRating);
       
-      console.log(updatedComment ,newRating);
+      }else{
+        setToggleModal(false);
 
-    } else {
-      console.log(newComment, newRating);
+        document.getElementById("comments").value = "";
+        setRating(0);
+        
+        let books = JSON.parse(localStorage.getItem("store"));
+
+        books.books[isbn].review.push({
+          rating: newRating,
+          comment: updatedComment
+        });
+
+
+
+        var total_sum = 0
+
+        books.books[isbn].review.map((ele)=>{
+           return total_sum = total_sum+ele.rating
+         });
+        
+        var overAllRating = total_sum/books.books[isbn].review.length
+        
+        books.books[isbn].overallRatings = overAllRating;
+        localStorage.setItem("store" , JSON.stringify(books));
+        updateBook({
+          data:books
+        })
+      }
+    }else{
+      alert("Either Rating or Comment not provided !!!")
     }
   };
-
-  // toupdate reviews
-  // reviews.push(
-  //   {
-  //     comment: "Book servers the purpose",
-  //     rating: 4
-  //   });
-  // var total_sum = 0
-  // currentBook.review.map((ele)=>{
-  //    return total_sum = total_sum+ele.rating
-  //  })
-  //  var overAllRating = total_sum/currentBook.review.length
 
   const [URL] = useSearchParams();
   const isbn = URL.get("isbn");
@@ -128,6 +152,7 @@ function Specificbook({ updateBook }) {
             return <Comment rating={e.rating} comment={e.comment} />;
           })}
         </div>
+        <ModalPopUp isbn = {isbn} handleSubmit={handleSubmit} onClose={() => setToggleModal(false)}  toggleModal={toggleModal} />
       </div>
     </>
   );
