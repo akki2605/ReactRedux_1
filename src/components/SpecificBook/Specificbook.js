@@ -41,7 +41,8 @@ function Specificbook({ updateBook }) {
   };
 
   const [toggleModal, setToggleModal] = useState(false);
-  
+
+  //used to 
   const handleSubmit = (e, isbn) => {
     e.preventDefault();
     var newComment = document.getElementById("comments").value;
@@ -88,10 +89,7 @@ function Specificbook({ updateBook }) {
           comment: updatedComment
         });
 
-
-
         var total_sum = 0
-
         books.books[isbn].review.map((ele)=>{
            return total_sum = total_sum+ele.rating
          });
@@ -114,7 +112,6 @@ function Specificbook({ updateBook }) {
   const books = JSON.parse(localStorage.getItem("store")).books;
   const currentBook = books[isbn];
   var reviews = currentBook.review;
-  // console.log(reviews);
 
   //main page rendering
   return (

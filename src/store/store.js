@@ -25,12 +25,3 @@ store.dispatch({
 console.log(store.getState().allBooks.books)
 
 export default store
-
-
-
-// const unsubscribe = store.subscribe(()=>{console.log("action taken place ",store.getState())})
-// unsubscribe()
-// const rootReducer = combineReducers({
-//     home:homeReducer,
-//     update:updateReducer
-// })

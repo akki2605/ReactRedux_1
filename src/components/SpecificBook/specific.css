@@ -1,9 +1,6 @@
 .book-detail{
     background-color: aliceblue;
-    /* overflow:auto;       */
-    /* display: flex;    */
     width: 900px;
-    /* height: 100%; */
     padding: 20px;
     border-radius: 20px;
 }
@@ -67,8 +64,7 @@ textarea{
     border-radius: 20px;
 }
 
-
-  button {
+  #add {
     margin-top: 10px;
     margin-left: 530px;
     color: #090909;
@@ -82,7 +78,7 @@ textarea{
    }
    
      
-   button:active {
+   #add:active {
     box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
    }
 
