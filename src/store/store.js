@@ -2,6 +2,7 @@ import {createStore} from 'redux';
 import data from '../books.json'
 
 export const reducer = (initialState = {allBooks: {}},action)=>{
+    
     switch(action.type){
         case "readBook":
             return {
@@ -22,6 +23,6 @@ store.dispatch({
         type : "readBook"
 })
 
-console.log(store.getState().allBooks.books)
+// console.log(store.getState().allBooks.books)
 
 export default store

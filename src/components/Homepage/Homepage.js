@@ -16,12 +16,11 @@ const mapDispatchToProps = (dispatch)=>{
 }
 
 
-
 function Homepage({getAllData,allBooks}) {
 
     useEffect(()=>{
-      getAllData()
-    },[])
+      getAllData() 
+    });
   
     var store;
     const lStorage = localStorage.getItem("store");
