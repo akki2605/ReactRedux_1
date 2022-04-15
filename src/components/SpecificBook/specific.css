@@ -1,5 +1,6 @@
 .book-detail{
     /* top | right | bottom | left */
+    align-self: center;
     margin: 20px 5% 0 5%;
     width: auto;
     background-color: rgb(255, 255, 255);
@@ -7,7 +8,13 @@
     border-radius: 20px;
     box-shadow: 10px 10px 30px #000000;
 }
-
+.back{
+    position: absolute;
+    top:20px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+}
 .book-cover{
     float: left;
     border-radius: 20px;
@@ -21,7 +28,6 @@
     margin-left: 300px;
     font-size: 40px;
     font-family:'Segoe UI', sans-serif;
-
 }
 
 .over-all-rating{
@@ -32,7 +38,7 @@
     margin: 0;
     font-weight:normal;
     font-size: 20px;
-    margin-left: 435px;
+    margin-left: 300px;
 }
 
 form{
@@ -90,5 +96,42 @@ textarea{
     border-radius: 20px;
     box-shadow: 4px 4px 12px #c5c5c5;   
 
+}
+
+@media only screen and (max-device-width: 780px) {
+
+    .book-detail{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-cover{
+        align-self: center;
+        margin: 15px;
+        border-radius: 0;
+    }
+    .book-title{
+        margin:0;
+        font-size: 30px;
+        text-align: center;
+    }
+    .over-all-rating{
+        margin: 0;
+        text-align: center;
+    }
+    .book-author{
+        margin: 0;
+        text-align: center;
+    }
+    form{
+        margin:0;
+    }    
+
+    .comment-header{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
 }
 

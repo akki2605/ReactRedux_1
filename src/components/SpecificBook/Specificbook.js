@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import Header from "../Homepage/Header";
 import Cover from "../common/Cover";
 import Comment from "./Comment";
 import Rating from "../common/Ratings";
-import ModalPopUp from "./ModalPopUp"
+import ModalPopUp from "./ModalPopUp";
 import { RatingStar } from "rating-star";
 import { Title, Author } from "../common/BookDescription";
 import "./specific.css";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -27,26 +26,25 @@ const mapDispatchToProps = (dispatch) => {
 const restricted = ["poor", "waste", "disgusting", "horrible", "filthy"];
 
 function Specificbook({ updateBook }) {
-  
   function check(comment) {
     return restricted.some((v) => comment.includes(v));
   }
 
   const [newRating, setRating] = useState(0);
-    const onRatingChange = (rate) => {
+  const onRatingChange = (rate) => {
     setRating(rate);
   };
 
   const [toggleModal, setToggleModal] = useState(false);
 
-  //used to 
+  //used to
   const handleSubmit = (e, isbn) => {
     e.preventDefault();
     var newComment = document.getElementById("comments").value;
     var updatedComment = newComment;
 
-    if(newRating >0 && updatedComment.length>0){
-      if ( check(updatedComment) ) {
+    if (newRating > 0 && updatedComment.length > 0) {
+      if (check(updatedComment)) {
         setToggleModal(true);
         var commentArr = newComment.split(" ");
         commentArr.forEach((ele, index) => {
@@ -68,40 +66,39 @@ function Specificbook({ updateBook }) {
               break;
           }
         });
-        
-        updatedComment = commentArr.join(' '); 
+
+        updatedComment = commentArr.join(" ");
         document.getElementById("comments").value = updatedComment;
         // console.log("inside if block",updatedComment , newRating);
-      
-      }else{
+      } else {
         setToggleModal(false);
 
         document.getElementById("comments").value = "";
         setRating(0);
-        
+
         let books = JSON.parse(localStorage.getItem("store"));
 
         books.books[isbn].review.push({
           rating: newRating,
-          comment: updatedComment
+          comment: updatedComment,
         });
 
-        var total_sum = 0
-        books.books[isbn].review.map((ele)=>{
-           return total_sum = total_sum+ele.rating
-         });
-        
-        var overAllRating = total_sum/books.books[isbn].review.length
-        
+        var total_sum = 0;
+        books.books[isbn].review.map((ele) => {
+          return (total_sum = total_sum + ele.rating);
+        });
+
+        var overAllRating = total_sum / books.books[isbn].review.length;
+
         books.books[isbn].overallRatings = overAllRating;
-        localStorage.setItem("store" , JSON.stringify(books));
-        
+        localStorage.setItem("store", JSON.stringify(books));
+
         updateBook({
-          data:books
-        })
+          data: books,
+        });
       }
-    }else{
-      alert("Either Rating or Comment not provided !!!")
+    } else {
+      alert("Either Rating or Comment not provided !!!");
     }
   };
 
@@ -116,6 +113,12 @@ function Specificbook({ updateBook }) {
   return (
     <>
       <div className="book-detail">
+        <Link to="/">
+          <img
+            className="back"
+            src="https://img.icons8.com/ios-glyphs/90/000000/left.png"
+          />
+        </Link>
         <Cover className="book-cover" link={currentBook.coverpage} />
         <Title className="book-title" title={currentBook.title} />
         <Rating
@@ -123,7 +126,7 @@ function Specificbook({ updateBook }) {
           number={currentBook.overallRatings}
         />
         <Author className="book-author" author={currentBook.author} />
-        
+
         <form onSubmit={(event) => handleSubmit(event, isbn)}>
           <div className="comment-header">
             <div id="comment">Comment :</div>
@@ -144,13 +147,20 @@ function Specificbook({ updateBook }) {
           </button>
         </form>
         <div className="comment-container">
-          {
-            reviews.map((e) => {
+          {reviews.map((e) => {
             return <Comment rating={e.rating} comment={e.comment} />;
           })}
         </div>
-        <ModalPopUp isbn = {isbn} handleSubmit={handleSubmit} onClose={() => {setToggleModal(false); document.getElementById("comments").value = "";
-        setRating(0);}}  toggleModal={toggleModal} />
+        <ModalPopUp
+          isbn={isbn}
+          handleSubmit={handleSubmit}
+          onClose={() => {
+            setToggleModal(false);
+            document.getElementById("comments").value = "";
+            setRating(0);
+          }}
+          toggleModal={toggleModal}
+        />
       </div>
     </>
   );
