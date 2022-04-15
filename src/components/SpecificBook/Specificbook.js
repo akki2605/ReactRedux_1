@@ -116,7 +116,7 @@ function Specificbook({ updateBook }) {
         <Link to="/">
           <img
             className="back"
-            src="https://img.icons8.com/ios-glyphs/90/000000/left.png"
+            src="https://img.icons8.com/ios-glyphs/400/000000/left.png"
           />
         </Link>
         <Cover className="book-cover" link={currentBook.coverpage} />
