@@ -1,7 +1,6 @@
 .modal{
-    background-color: rgb(2, 2, 2);
-    opacity: 1;
-    position: fixed;
+    backdrop-filter: blur(2px);
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -10,13 +9,17 @@
     align-items: center;
     justify-content: center;
 }
+
 .modal-content{
-    background-color: aliceblue;
-    border: 5px solid rgb(255, 0, 0);
-    border-radius: 20px;
-    width: 500px;
-    padding: 10px;
-    text-align: center;
+    
+  position: relative;
+  font-family: Verdana, sans-serif;
+  background-color: aliceblue;
+  border-radius: 20px;
+  width: 500px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 6px 6px 24px #3f3f3f;
 }
 
 #yes,#no {
@@ -31,10 +34,11 @@
     transition: all .1s;
     /* offset-x | offset-y | blur-radius | color , any number of shadows*/
     box-shadow: 6px 6px 12px #c5c5c5,-6px -6px 12px #ffffff;
-  }
-  #yes:active,#no:active{
-    box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
-  }
+}
+
+#yes:active,#no:active{
+  box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+}
 
 #modalform{
     display: flex;

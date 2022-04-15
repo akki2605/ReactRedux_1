@@ -7,11 +7,14 @@ import "./Card.css";
 
 export default function Card(props) {
   return (
-    <Link to={"/specific_book?isbn="+props.id} style={{ textDecoration: 'none',color: 'black'}}>
+    <Link
+      to={"/specific_book?isbn=" + props.id}
+      style={{ textDecoration: "none", color: "black", width: "96%"}}
+    >
       <div className="card">
         <Cover className="bookCover" link={props.book.coverpage} />
         <Title className="title" title={props.book.title} />
-        <Rating className="star"number={props.book.overallRatings} />
+        <Rating className="star" number={props.book.overallRatings} />
         <Author className="authorName" author={props.book.author} />
       </div>
     </Link>

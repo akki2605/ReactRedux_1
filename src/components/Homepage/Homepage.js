@@ -22,6 +22,7 @@ function Homepage({getAllData,allBooks}) {
       getAllData() 
     });
   
+    //use hook for data fetching because 
     var store;
     const lStorage = localStorage.getItem("store");
     if (lStorage == null ) {
@@ -33,8 +34,7 @@ function Homepage({getAllData,allBooks}) {
   
     return (
       <>
-        <Header />
-        <div>
+        <div className="cards-container">
           {
             store.listIsbn.map((isbn) => {
               return <Card key={isbn} id={isbn} book={store.books[isbn]}/>

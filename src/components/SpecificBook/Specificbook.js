@@ -29,10 +29,7 @@ const restricted = ["poor", "waste", "disgusting", "horrible", "filthy"];
 function Specificbook({ updateBook }) {
   
   function check(comment) {
-    if (restricted.some((v) => comment.includes(v))) {
-      return true;
-    } else 
-    return false;
+    return restricted.some((v) => comment.includes(v));
   }
 
   const [newRating, setRating] = useState(0);
@@ -74,7 +71,7 @@ function Specificbook({ updateBook }) {
         
         updatedComment = commentArr.join(' '); 
         document.getElementById("comments").value = updatedComment;
-        console.log("inside if block",updatedComment , newRating);
+        // console.log("inside if block",updatedComment , newRating);
       
       }else{
         setToggleModal(false);
@@ -98,6 +95,7 @@ function Specificbook({ updateBook }) {
         
         books.books[isbn].overallRatings = overAllRating;
         localStorage.setItem("store" , JSON.stringify(books));
+        
         updateBook({
           data:books
         })
@@ -107,6 +105,7 @@ function Specificbook({ updateBook }) {
     }
   };
 
+  //read about useSearchParams
   const [URL] = useSearchParams();
   const isbn = URL.get("isbn");
   const books = JSON.parse(localStorage.getItem("store")).books;
@@ -116,7 +115,6 @@ function Specificbook({ updateBook }) {
   //main page rendering
   return (
     <>
-      <Header />
       <div className="book-detail">
         <Cover className="book-cover" link={currentBook.coverpage} />
         <Title className="book-title" title={currentBook.title} />
@@ -125,6 +123,7 @@ function Specificbook({ updateBook }) {
           number={currentBook.overallRatings}
         />
         <Author className="book-author" author={currentBook.author} />
+        
         <form onSubmit={(event) => handleSubmit(event, isbn)}>
           <div className="comment-header">
             <div id="comment">Comment :</div>
@@ -145,11 +144,13 @@ function Specificbook({ updateBook }) {
           </button>
         </form>
         <div className="comment-container">
-          {reviews.map((e) => {
+          {
+            reviews.map((e) => {
             return <Comment rating={e.rating} comment={e.comment} />;
           })}
         </div>
-        <ModalPopUp isbn = {isbn} handleSubmit={handleSubmit} onClose={() => setToggleModal(false)}  toggleModal={toggleModal} />
+        <ModalPopUp isbn = {isbn} handleSubmit={handleSubmit} onClose={() => {setToggleModal(false); document.getElementById("comments").value = "";
+        setRating(0);}}  toggleModal={toggleModal} />
       </div>
     </>
   );
