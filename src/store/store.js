@@ -10,6 +10,7 @@ export const reducer = (initialState = {allBooks: {}},action)=>{
             }
         case "updateBook":
             return{
+                ...initialState,
                 allBooks:action.payload.data
             }
         default:

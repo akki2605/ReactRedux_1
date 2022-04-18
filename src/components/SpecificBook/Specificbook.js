@@ -19,7 +19,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getAllData: () => dispatch({ type: "readBook" }),
     updateBook: (data) =>
-      dispatch({ type: "updateBook", payload: { data: data } }),
+      dispatch({ 
+        type: "updateBook", 
+        payload: data 
+      }),
   };
 };
 
@@ -39,6 +42,7 @@ function Specificbook({ updateBook }) {
 
   //used to
   const handleSubmit = (e, isbn) => {
+    console.log(e.target)
     e.preventDefault();
     var newComment = document.getElementById("comments").value;
     var updatedComment = newComment;
@@ -69,7 +73,7 @@ function Specificbook({ updateBook }) {
 
         updatedComment = commentArr.join(" ");
         document.getElementById("comments").value = updatedComment;
-        // console.log("inside if block",updatedComment , newRating);
+
       } else {
         setToggleModal(false);
 
