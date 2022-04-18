@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "./Header";
 import Card from "./Card";
 import {connect } from "react-redux";
 
@@ -20,7 +19,7 @@ function Homepage({getAllData,allBooks}) {
 
     useEffect(()=>{
       getAllData() 
-    });
+    },[]);
   
     //use hook for data fetching because 
     var store;

@@ -1,20 +1,22 @@
 import {createStore} from 'redux';
 import data from '../books.json'
+var initialState = {allBooks: {}};
 
-export const reducer = (initialState = {allBooks: {}},action)=>{
+export const reducer = (state=initialState,action)=>{
     
     switch(action.type){
         case "readBook":
             return {
+                ...state,
                 allBooks: data
             }
         case "updateBook":
             return{
-                ...initialState,
+                ...state,
                 allBooks:action.payload.data
             }
         default:
-            return initialState
+            return state;
     }
 }
 
