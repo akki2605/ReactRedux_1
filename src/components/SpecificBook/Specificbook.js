@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Link, useSearchParams } from "react-router-dom";
 import Cover from "../common/Cover";
 import Comment from "./Comment";
 import Rating from "../common/Ratings";
@@ -7,7 +8,6 @@ import ModalPopUp from "./ModalPopUp";
 import { RatingStar } from "rating-star";
 import { Title, Author } from "../common/BookDescription";
 import "./specific.css";
-import { Link, useSearchParams } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -42,9 +42,12 @@ function Specificbook({ updateBook }) {
 
   //used to
   const handleSubmit = (e, isbn) => {
-    console.log(e.target)
+
+    // console.log(e.target[1].value)
     e.preventDefault();
-    var newComment = document.getElementById("comments").value;
+
+
+    var newComment = e.target[0].value;
     var updatedComment = newComment;
 
     if (newRating > 0 && updatedComment.length > 0) {
@@ -72,12 +75,12 @@ function Specificbook({ updateBook }) {
         });
 
         updatedComment = commentArr.join(" ");
-        document.getElementById("comments").value = updatedComment;
+        e.target[0].value = updatedComment;
 
       } else {
         setToggleModal(false);
 
-        document.getElementById("comments").value = "";
+        e.target[0].value = "";
         setRating(0);
 
         let books = JSON.parse(localStorage.getItem("store"));
